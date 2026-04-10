@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.compose.material3)
 
     implementation("androidx.compose.material:material-icons-extended")
+    implementation(libs.androidx.compose.animation.core)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

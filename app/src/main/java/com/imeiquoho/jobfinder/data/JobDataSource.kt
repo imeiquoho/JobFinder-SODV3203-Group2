@@ -1,100 +1,183 @@
-package com.imeiquoho.jobfinder.data
+package com.imeiquoho.jobfinder.ui.components
 
-object JobDataSource {
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.BookmarkBorder
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.dp
+import com.imeiquoho.jobfinder.data.JobPosting
 
-    fun getSampleJobs(): List<JobPosting> {
-        return listOf(
-            JobPosting(
-                id = 1,
-                title = "Junior Android Developer",
-                company = "Prairie Tech Labs",
-                location = "Calgary, AB",
-                salary = "$55,000 - $68,000",
-                summary = "Build and improve Android screens using Kotlin and Jetpack Compose.",
-                requirements = listOf(
-                    "Basic knowledge of Kotlin",
-                    "Familiarity with Android Studio",
-                    "Willingness to learn UI design principles"
-                ),
-                responsibilities = listOf(
-                    "Support feature development",
-                    "Work with reusable composables",
-                    "Fix small UI issues and test layouts"
+@Composable
+fun JobCard(
+    job: JobPosting,
+    onSaveClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+
+    var expanded by remember { mutableStateOf(false) }
+
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 12.dp, vertical = 8.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+    ) {
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .animateContentSize(
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioHighBouncy,
+                        stiffness = Spring.StiffnessLow
+                    )
                 )
-            ),
-            JobPosting(
-                id = 2,
-                title = "IT Support Assistant",
-                company = "Maple Business Services",
-                location = "Edmonton, AB",
-                salary = "$23/hour",
-                summary = "Help staff with device setup, password resets, and software troubleshooting.",
-                requirements = listOf(
-                    "Good communication skills",
-                    "Basic troubleshooting experience",
-                    "Customer service mindset"
-                ),
-                responsibilities = listOf(
-                    "Respond to support requests",
-                    "Document recurring issues",
-                    "Assist with laptop and software setup"
+                .padding(16.dp)
+        ) {
+
+            // HEADER
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+
+                Text(
+                    text = job.title,
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.semantics { heading() }
                 )
-            ),
-            JobPosting(
-                id = 3,
-                title = "Frontend Web Intern",
-                company = "NorthGrid Creative",
-                location = "Remote",
-                salary = "Internship",
-                summary = "Assist with building clean and responsive web interfaces for client projects.",
-                requirements = listOf(
-                    "Basic HTML and CSS knowledge",
-                    "Interest in UI/UX",
-                    "Willingness to learn frontend tools"
-                ),
-                responsibilities = listOf(
-                    "Update web page sections",
-                    "Test responsive layouts",
-                    "Support design implementation"
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                JobExpandButton(
+                    expanded = expanded,
+                    onClick = { expanded = !expanded }
                 )
-            ),
-            JobPosting(
-                id = 4,
-                title = "Data Entry Clerk",
-                company = "Cedar Health Group",
-                location = "Airdrie, AB",
-                salary = "$20/hour",
-                summary = "Maintain accurate data records and support simple reporting tasks.",
-                requirements = listOf(
-                    "Attention to detail",
-                    "Comfort using spreadsheets",
-                    "Ability to follow instructions"
-                ),
-                responsibilities = listOf(
-                    "Enter and verify records",
-                    "Review information for accuracy",
-                    "Support admin reporting"
-                )
-            ),
-            JobPosting(
-                id = 5,
-                title = "Customer Service Representative",
-                company = "WestPeak Retail",
-                location = "Calgary, AB",
-                salary = "$22/hour",
-                summary = "Provide friendly support to customers and help resolve service questions.",
-                requirements = listOf(
-                    "Strong communication",
-                    "Patience and professionalism",
-                    "Ability to work in a team"
-                ),
-                responsibilities = listOf(
-                    "Answer customer questions",
-                    "Escalate complex concerns",
-                    "Maintain clear service notes"
-                )
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // Always visible summary
+            Text(
+                text = job.summary,
+                style = MaterialTheme.typography.bodyMedium
             )
-        )
+
+            // 🔹 EXPANDED CONTENT
+            if (expanded) {
+
+                Spacer(modifier = Modifier.height(12.dp))
+                HorizontalDivider()
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Column {
+
+                    Text(
+                        text = job.company,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+
+                    Text(
+                        text = job.location,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Text(
+                        text = "Salary: ${job.salary}",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Text(
+                        text = "Requirements",
+                        style = MaterialTheme.typography.titleSmall
+                    )
+
+                    Spacer(modifier = Modifier.height(6.dp))
+
+                    job.requirements.forEach {
+                        Text("• $it")
+                    }
+
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    Text(
+                        text = "Responsibilities",
+                        style = MaterialTheme.typography.titleSmall
+                    )
+
+                    Spacer(modifier = Modifier.height(6.dp))
+
+                    job.responsibilities.forEach {
+                        Text("• $it")
+                    }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Button(
+                        onClick = onSaveClick,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+
+                        Icon(
+                            imageVector = if (job.isSaved)
+                                Icons.Filled.Bookmark
+                            else
+                                Icons.Filled.BookmarkBorder,
+                            contentDescription = if (job.isSaved)
+                                "Remove saved job"
+                            else
+                                "Save job posting"
+                        )
+
+                        Spacer(modifier = Modifier.width(8.dp))
+
+                        Text(
+                            text = if (job.isSaved)
+                                "Remove from Saved Jobs"
+                            else
+                                "Save Job"
+                        )
+                    }
+                }
+            }
+        }
     }
 }
 
+@Composable
+private fun JobExpandButton(
+    expanded: Boolean,
+    onClick: () -> Unit
+) {
+    IconButton(
+        onClick = onClick,
+        modifier = Modifier.size(48.dp)
+    ) {
+        Icon(
+            imageVector = if (expanded)
+                Icons.Filled.ExpandLess
+            else
+                Icons.Filled.ExpandMore,
+            contentDescription = if (expanded)
+                "Collapse job details"
+            else
+                "Expand job details",
+            tint = MaterialTheme.colorScheme.onSurface
+        )
+    }
+}
