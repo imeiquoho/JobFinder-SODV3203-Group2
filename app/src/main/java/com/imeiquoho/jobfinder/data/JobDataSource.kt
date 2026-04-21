@@ -10,16 +10,23 @@ object JobDataSource {
                 company = "Prairie Tech Labs",
                 location = "Calgary, AB",
                 salary = "$55,000 - $68,000",
-                summary = "Build and improve Android screens using Kotlin and Jetpack Compose.",
+                summary = "Build polished Android screens with Kotlin and Jetpack Compose.",
+                description = "Join a small product team building internal tools for local businesses. " +
+                    "You will help shape reusable Compose components, improve accessibility, and support " +
+                    "feature delivery across the Android app.",
+                employmentType = "Full-time",
+                workModel = "Hybrid",
+                postedLabel = "Posted 2 days ago",
+                tags = listOf("Compose", "Accessibility", "Entry level"),
                 requirements = listOf(
-                    "Basic knowledge of Kotlin",
-                    "Familiarity with Android Studio",
-                    "Willingness to learn UI design principles"
+                    "Comfort reading Kotlin code",
+                    "Basic Android Studio workflow",
+                    "Interest in modern UI patterns"
                 ),
                 responsibilities = listOf(
-                    "Support feature development",
-                    "Work with reusable composables",
-                    "Fix small UI issues and test layouts"
+                    "Build and refine reusable composables",
+                    "Test layouts across phone sizes",
+                    "Fix UI bugs and support code reviews"
                 )
             ),
             JobPosting(
@@ -28,16 +35,23 @@ object JobDataSource {
                 company = "Maple Business Services",
                 location = "Edmonton, AB",
                 salary = "$23/hour",
-                summary = "Help staff with device setup, password resets, and software troubleshooting.",
+                summary = "Support staff with everyday hardware and software issues.",
+                description = "This role is ideal for someone who enjoys troubleshooting and helping people " +
+                    "work through technical issues. You will handle tickets, set up devices, and keep " +
+                    "simple support documentation up to date.",
+                employmentType = "Part-time",
+                workModel = "On-site",
+                postedLabel = "Posted today",
+                tags = listOf("Help desk", "Students welcome", "Office"),
                 requirements = listOf(
                     "Good communication skills",
-                    "Basic troubleshooting experience",
-                    "Customer service mindset"
+                    "Basic device troubleshooting experience",
+                    "Comfort documenting recurring issues"
                 ),
                 responsibilities = listOf(
                     "Respond to support requests",
-                    "Document recurring issues",
-                    "Assist with laptop and software setup"
+                    "Set up laptops and user accounts",
+                    "Document common fixes for future reference"
                 )
             ),
             JobPosting(
@@ -46,16 +60,23 @@ object JobDataSource {
                 company = "NorthGrid Creative",
                 location = "Remote",
                 salary = "Internship",
-                summary = "Assist with building clean and responsive web interfaces for client projects.",
+                summary = "Help build responsive web pages for client projects.",
+                description = "Work with a small design-forward team shipping landing pages and campaign " +
+                    "updates. This internship focuses on clean layouts, accessible markup, and practical " +
+                    "feedback from designers and developers.",
+                employmentType = "Internship",
+                workModel = "Remote",
+                postedLabel = "Posted 1 week ago",
+                tags = listOf("HTML/CSS", "UI", "Portfolio building"),
                 requirements = listOf(
                     "Basic HTML and CSS knowledge",
-                    "Interest in UI/UX",
-                    "Willingness to learn frontend tools"
+                    "Interest in responsive design",
+                    "Willingness to learn frontend tooling"
                 ),
                 responsibilities = listOf(
-                    "Update web page sections",
-                    "Test responsive layouts",
-                    "Support design implementation"
+                    "Update existing web sections",
+                    "Test pages on multiple screen sizes",
+                    "Support design implementation and QA"
                 )
             ),
             JobPosting(
@@ -64,16 +85,23 @@ object JobDataSource {
                 company = "Cedar Health Group",
                 location = "Airdrie, AB",
                 salary = "$20/hour",
-                summary = "Maintain accurate data records and support simple reporting tasks.",
+                summary = "Maintain accurate records and support basic reporting tasks.",
+                description = "This position suits detail-oriented applicants who can follow established " +
+                    "processes. You will organize incoming information, validate records, and support " +
+                    "administrative reporting.",
+                employmentType = "Part-time",
+                workModel = "On-site",
+                postedLabel = "Posted 3 days ago",
+                tags = listOf("Admin", "Entry level", "Accuracy"),
                 requirements = listOf(
-                    "Attention to detail",
+                    "Strong attention to detail",
                     "Comfort using spreadsheets",
-                    "Ability to follow instructions"
+                    "Ability to follow written instructions"
                 ),
                 responsibilities = listOf(
                     "Enter and verify records",
                     "Review information for accuracy",
-                    "Support admin reporting"
+                    "Support weekly admin reporting"
                 )
             ),
             JobPosting(
@@ -82,19 +110,48 @@ object JobDataSource {
                 company = "WestPeak Retail",
                 location = "Calgary, AB",
                 salary = "$22/hour",
-                summary = "Provide friendly support to customers and help resolve service questions.",
+                summary = "Deliver friendly support and help customers resolve service questions.",
+                description = "You will support customers across phone, email, and in-store follow-up. " +
+                    "The team values patience, clear communication, and consistent note taking.",
+                employmentType = "Part-time",
+                workModel = "Hybrid",
+                postedLabel = "Posted 5 days ago",
+                tags = listOf("Customer support", "Communication", "Flexible shifts"),
                 requirements = listOf(
-                    "Strong communication",
+                    "Strong communication skills",
                     "Patience and professionalism",
-                    "Ability to work in a team"
+                    "Ability to work in a team environment"
                 ),
                 responsibilities = listOf(
-                    "Answer customer questions",
-                    "Escalate complex concerns",
-                    "Maintain clear service notes"
+                    "Answer customer questions clearly",
+                    "Escalate complex concerns when needed",
+                    "Keep service notes complete and accurate"
+                )
+            ),
+            JobPosting(
+                id = 6,
+                title = "QA Tester Trainee",
+                company = "Summit Digital",
+                location = "Remote",
+                salary = "$24/hour",
+                summary = "Test app features, document bugs, and support release readiness.",
+                description = "A good fit for someone curious about quality, checklists, and edge cases. " +
+                    "You will verify UI flows, reproduce bugs, and help keep release notes organized.",
+                employmentType = "Contract",
+                workModel = "Remote",
+                postedLabel = "Posted yesterday",
+                tags = listOf("Testing", "Documentation", "Entry level"),
+                requirements = listOf(
+                    "Strong observation skills",
+                    "Comfort writing clear bug reports",
+                    "Basic understanding of app workflows"
+                ),
+                responsibilities = listOf(
+                    "Run test cases on new builds",
+                    "Capture reproducible bug steps",
+                    "Support release checklists and validation"
                 )
             )
         )
     }
 }
-
